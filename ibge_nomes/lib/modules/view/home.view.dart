@@ -10,6 +10,13 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Nomes populares IBGE"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                controller.getNomes();
+              },
+              icon: const Icon(Icons.autorenew_sharp))
+        ],
       ),
       body: Container(
         child: controller.obx(
@@ -19,16 +26,18 @@ class HomeView extends GetView<HomeController> {
                   return Column(
                     children: [
                       ListTile(
-                        contentPadding: const EdgeInsets.only(left:8, right: 8),
-                          title: Text('Nome: ${state![i].nome}'),
-                          subtitle: Text('Rank: ${state[i].rank}'),
-                          onTap: (){
-                            controller.irDetalhe(state[i]);
-                          },),
+                        contentPadding:
+                            const EdgeInsets.only(left: 8, right: 8),
+                        title: Text('Nome: ${state![i].nome}'),
+                        subtitle: Text('Rank: ${state[i].rank}'),
+                        onTap: () {
+                          controller.irDetalhe(state[i]);
+                        },
+                      ),
                       const Divider()
                     ],
                   );
-                }),
+                }),            
             onEmpty: const Center(child: Text("Sem dados para exibição")),
             onError: (error) => Center(child: Text(error ?? ""))),
       ),

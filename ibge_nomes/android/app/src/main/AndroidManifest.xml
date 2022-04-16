@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ibge_nomes">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="ibge_nomes"
         android:icon="@mipmap/ic_launcher">
